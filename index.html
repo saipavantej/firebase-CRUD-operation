@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>task</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script> 
+    <script defer src="app.js"></script>
 </head>
+
 <body>
+    <div class="content">
+
+        <form id="add-form">
+            <input name="coloum1" placeholder="name" minlength="2" maxlength="20" type="text">
+            <select name="coloum2">
+                <option value="" disabled selected>Select Data Type</option>
+                <option value="date">data</option>
+                <option value="number">number</option>
+                <option value="multiselect">multiselect</option>
+            </select>
+            <input name="coloum3" placeholder="value" minlength="2" maxlength="20" type="text">
+            <button class="btn" type="submit">Add to Database</button>
+        </form>
+        <ul id="list"></ul>
+
+    </div>
 </body>
+
 </html>
