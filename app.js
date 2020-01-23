@@ -1,0 +1,65 @@
+const List = document.querySelector('#list');
+const form = document.querySelector('#add-form');
+
+// create element & render page
+function render(doc) {
+    let li = document.createElement('li');
+    let coloum1 = document.createElement('span');
+    let coloum2 = document.createElement('span');
+    let coloum3 = document.createElement('span');
+    let cross = document.createElement('div');
+    li.setAttribute('data-id', doc.id);
+    coloum1.textContent = `name : ${doc.data().coloum1}`;
+    coloum2.textContent = `type : ${doc.data().coloum2}`;
+    coloum3.textContent = `value: ${doc.data().coloum3}`;
+    cross.textContent = 'x';
+    li.appendChild(coloum1);
+    li.appendChild(coloum2);
+    li.appendChild(coloum3);
+    li.appendChild(cross);
+    List.appendChild(li);
+
+    // delete data 
+    cross.addEventListener("click", (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute("data-id");
+        db.collection("tables").doc(id).delete();
+    });
+}
+
+
+// real time  getting data
+
+db.collection('tables').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(changes => {
+        console.log(changes.doc.data());
+        if (changes.type == "added") {
+            render(changes.doc);
+
+        }
+        else if (changes.type == "removed") {
+            let li = List.querySelector("[data-id=" + changes.doc.id + "]");
+            List.removeChild(li);
+
+        }
+    });
+});
+
+// saving data
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(form.coloum1.value, form.coloum2.value, form.coloum3.value);
+    db.collection('tables').add({
+        coloum1: form.coloum1.value,
+        coloum2: form.coloum2.value,
+        coloum3: form.coloum3.value
+    });
+
+    alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
+    form.coloum1.value = '';
+    form.coloum2.value = '';
+    form.coloum3.value = '';
+});
+
