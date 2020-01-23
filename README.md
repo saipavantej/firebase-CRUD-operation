@@ -1,5 +1,5 @@
 ### Firebase CRUD operation using JavaScript
-> * read data from firestore to client app
+> * read data from firestore using client app
 > * create data in firestore using client app
 > * delete data in firestore using client app
 > * implemented firestore realtime listener
