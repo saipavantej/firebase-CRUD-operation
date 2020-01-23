@@ -123,3 +123,29 @@ form:after{
     background-color:rgb(80, 253, 80);  
     color : white;
  }
+ .float
+    {
+        position:relative;
+        display: block;
+        text-align: center;
+        color: white;
+        animation: animate 4s;
+        padding-top: 30px;
+      }
+.float a{
+    color: white;
+}
+
+@keyframes animate{
+    0%{
+    opacity: 0;
+    transform: translateX(-40px);
+    }
+    
+    60%{
+    transform: translateX(40px); 
+    }
+    100%{
+        transform: translate(0);
+    }
+}
