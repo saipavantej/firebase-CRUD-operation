@@ -1,6 +1,6 @@
 
 body{
-    background: linear-gradient( to bottom right, blue,green);
+    background-color: blue;
     font-family: ubuntu;
     
 }
@@ -26,7 +26,6 @@ ul{
     list-style-type: none;
     padding: 2px;
 }
-
 li{
     padding: 20px;
     background: #f6f6f6;
