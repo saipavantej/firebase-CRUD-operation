@@ -1,6 +1,7 @@
 const List = document.querySelector('#list');
 const form = document.querySelector('#add-form');
-
+const regex1 = /^[0-9]{1,}$/gi;
+const regex2 = /^\d{1,2}[\/-]\d{1,2}[\/-]\d{4}$/gi;
 // create element & render page
 function render(doc) {
     let li = document.createElement('li');
@@ -51,15 +52,25 @@ db.collection('tables').onSnapshot(snapshot => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(form.coloum1.value, form.coloum2.value, form.coloum3.value);
-    db.collection('tables').add({
-        coloum1: form.coloum1.value,
-        coloum2: form.coloum2.value,
-        coloum3: form.coloum3.value
-    });
+    if (regex1.test(form.coloum2.value)) {
 
-    alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
-    form.coloum1.value = '';
-    form.coloum2.value = '';
-    form.coloum3.value = '';
+
+        db.collection('tables').add({
+            coloum1: form.coloum1.value,
+            coloum2: form.coloum2.value,
+            coloum3: form.coloum3.value
+        });
+
+        alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
+        form.coloum1.value = '';
+        form.coloum2.value = '';
+        form.coloum3.value = '';
+    }
+    else {
+        alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
+        form.coloum1.value = '';
+        form.coloum2.value = '';
+        form.coloum3.value = '';
+    }
 });
 
