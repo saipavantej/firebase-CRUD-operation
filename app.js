@@ -48,29 +48,76 @@ db.collection('tables').onSnapshot(snapshot => {
 });
 
 // saving data
-
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(form.coloum1.value, form.coloum2.value, form.coloum3.value);
-    if (regex1.test(form.coloum2.value)) {
+    if (form.coloum1.value != "" && form.coloum2.value != "" && form.coloum3.value != "") {
+        const dropdown = form.coloum2.value;
+        switch (dropdown) {
+            case "number":
+                const test1 = regex1.test(form.coloum3.value);
+                console.log(test1);
+                if (test1) {
 
+                    db.collection('tables').add({
+                        coloum1: form.coloum1.value,
+                        coloum2: form.coloum2.value,
+                        coloum3: form.coloum3.value
+                    });
 
-        db.collection('tables').add({
-            coloum1: form.coloum1.value,
-            coloum2: form.coloum2.value,
-            coloum3: form.coloum3.value
-        });
+                    alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
+                    form.coloum1.value = '';
+                    form.coloum2.value = '';
+                    form.coloum3.value = '';
+                }
+                else {
+                    alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
+                    form.coloum1.value = '';
+                    form.coloum2.value = '';
+                    form.coloum3.value = '';
+                }
+                break;
+            case "date":
+                const test2 = regex2.test(form.coloum3.value);
+                console.log(test2);
+                if (test2) {
 
-        alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
-        form.coloum1.value = '';
-        form.coloum2.value = '';
-        form.coloum3.value = '';
+                    db.collection('tables').add({
+                        coloum1: form.coloum1.value,
+                        coloum2: form.coloum2.value,
+                        coloum3: form.coloum3.value
+
+                    });
+
+                    alert(`name : ${form.coloum1.value}\ndata type :${form.coloum2.value}\nvalue :${form.coloum3.value}\n are added to firestore`);
+                    form.coloum1.value = '';
+                    form.coloum2.value = '';
+                    form.coloum3.value = '';
+                }
+                else {
+                    alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
+                    form.coloum1.value = '';
+                    form.coloum2.value = '';
+                    form.coloum3.value = '';
+                }
+
+                break;
+            case "multiselect":
+                db.collection('tables').add({
+                    coloum1: form.coloum1.value,
+                    coloum2: form.coloum2.value,
+                    coloum3: form.coloum3.value
+
+                });
+
+                alert(`name : ${form.coloum1.value}\ndata type :${form.coloum2.value}\nvalue :${form.coloum3.value}\n are added to firestore`);
+                form.coloum1.value = '';
+                form.coloum2.value = '';
+                form.coloum3.value = '';
+                break;
+        }
     }
     else {
-        alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
-        form.coloum1.value = '';
-        form.coloum2.value = '';
-        form.coloum3.value = '';
+        alert("please enter all the fields");
     }
 });
-
