@@ -65,13 +65,13 @@ form.addEventListener('submit', (e) => {
                         coloum3: form.coloum3.value
                     });
 
-                    alert(`column1 : ${form.coloum1.value}\ncolumn2 :${form.coloum2.value}\n are added to data base refresh the page to get updated`);
+                    alert(`name : ${form.coloum1.value}\ndata type : ${form.coloum2.value}\nvalue : ${form.coloum3.value}\nare added to firestore`);
                     form.coloum1.value = '';
                     form.coloum2.value = '';
                     form.coloum3.value = '';
                 }
                 else {
-                    alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
+                    alert(`data type : ${form.coloum2.value} does not match with value : ${form.coloum3.value}`);
                     form.coloum1.value = '';
                     form.coloum2.value = '';
                     form.coloum3.value = '';
@@ -89,13 +89,13 @@ form.addEventListener('submit', (e) => {
 
                     });
 
-                    alert(`name : ${form.coloum1.value}\ndata type :${form.coloum2.value}\nvalue :${form.coloum3.value}\n are added to firestore`);
+                    alert(`name : ${form.coloum1.value}\ndata type : ${form.coloum2.value}\nvalue : ${form.coloum3.value}\nare added to firestore`);
                     form.coloum1.value = '';
                     form.coloum2.value = '';
                     form.coloum3.value = '';
                 }
                 else {
-                    alert(`data type : ${form.coloum2.value} does not match with value :${form.coloum3.value}`);
+                    alert(`data type : ${form.coloum2.value} does not match with value : ${form.coloum3.value}`);
                     form.coloum1.value = '';
                     form.coloum2.value = '';
                     form.coloum3.value = '';
@@ -110,7 +110,7 @@ form.addEventListener('submit', (e) => {
 
                 });
 
-                alert(`name : ${form.coloum1.value}\ndata type :${form.coloum2.value}\nvalue :${form.coloum3.value}\n are added to firestore`);
+                alert(`name : ${form.coloum1.value}\ndata type : ${form.coloum2.value}\nvalue : ${form.coloum3.value}\nare added to firestore`);
                 form.coloum1.value = '';
                 form.coloum2.value = '';
                 form.coloum3.value = '';
